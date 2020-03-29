@@ -10,9 +10,9 @@ Please follow the instructions below and fill in the information requested when 
 
 |               | Information   |
 |:-------------:|:-------------:|
-| Student Name  | name-here     |
-| Student ID    | id-here       |
-| Student Email | email-here    |
+| Student Name  | Michael Morales|
+| Student ID    | 920237211      |
+| Student Email | mmorales21@mail.sfsu.edu|
 
 
 
