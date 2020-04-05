@@ -1,0 +1,94 @@
+
+.registerform {
+    margin-top: 20px;
+}
+
+.register {
+    background-color: #eeeeee;
+    color: #333333;
+    font-family: 'Poppins', sans-serif;
+    margin: auto;
+    width: 500px;
+    margin-top: 10vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.agecheck {
+        
+    float: left;
+    display: block;
+    padding: 10px;
+    padding-left: 105px;
+    
+    
+}
+.tos {
+    float: left;
+    display: block;
+    padding: 10px;
+    padding-left: 105px;
+    padding-bottom: 30px;
+}
+
+.tos a:link{
+    color: rgb(233, 113, 0);
+    text-decoration: none;
+
+}
+
+.tos a:visited{
+    color: rgb(233, 113, 0);
+    text-decoration: none;
+
+}
+
+.tos a:hover{
+    color: rgb(196, 79, 2);
+    text-decoration: none;
+
+}
+
+@media screen and (max-width: 768px)
+{
+    .register {
+        font-size: 20px;
+        width: 100%;
+        height: 92vh;
+        background-color: #eeeeee;
+    }
+    
+    
+    label[for=tos]
+    {
+        padding-bottom: 30px;
+    }
+
+    input[type=checkbox]{
+        height: 25px;
+        width: 25px;
+        
+    }
+    .agecheck {
+        
+        float: left;
+        font-size: 16px;
+        text-align: left;
+        display: block;
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 30px;
+        
+    }
+    .tos {
+        float: left;
+        font-size: 16px;
+        display: block;
+        padding: 10px;
+        padding-left: 20px;
+        padding-bottom: 30px;
+
+    }  
+}

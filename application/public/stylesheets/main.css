@@ -1,0 +1,265 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+body {
+    height: 100%;
+    background-image: linear-gradient(to top right, #999999, #dddddd); 
+    background-image: linear-gradient(to top right, #eeeeee, #eeeeee);  
+}
+
+nav {
+     
+    height: 80px;
+    background-color: #333333;
+    background-color: rgb(62, 65, 71);
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    
+}
+
+.nav-bar {
+    margin: auto;
+    max-width: 1000px;
+}
+.nav-links  {  
+    
+    position: relative; 
+}
+
+.nav-links li{
+    list-style: none;
+    position: relative;
+}
+
+.nav-links a {
+    float: left;
+    padding: 16px;
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #cccccc;  
+    border-right: 1px solid #555555;
+}
+
+.right-nav {
+    float: right;
+}
+
+.right-nav a {
+    border-left: 1px solid #555555;
+    border-right: none;
+}
+
+.nav-links a:hover{
+   color: #eeeeee; 
+}
+
+
+section {
+    text-align: center;
+    margin: auto;
+    
+}
+
+.images {
+    text-align: center;
+    justify-content: center;
+    
+}
+
+img {
+    padding: 10px;
+}
+
+
+input[type=text], input[type=password], input[type=email]{
+    padding: 14px 18px;
+    height: 40px;
+    margin: auto;
+    margin-top: 5px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    display: block;
+}
+
+nav input[type=text] {
+    
+    width: 450px;
+    height: 30px;
+    margin-left: -100px;
+    margin-top: 20px;
+    display: inline-block;   
+}
+
+.burger{
+   
+    position: absolute;
+    right: 5%;
+   display: none;
+   cursor: pointer;
+}
+
+.burger div{
+    width: 25px;
+    height: 3px;
+    background-color: #cccccc;
+    margin: 5px;
+    transition: all 0.3s ease;
+
+
+}
+
+
+input[type=submit] {
+    display: block;
+    margin: auto;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
+    height: 40px;
+    font-size: 16px;
+    background-color: rgb(62, 65, 71);
+    color: #eeeeee;
+}
+
+
+label[for=uname], label[for=email], label[for=password]{
+    float: left;
+    padding-left: 105px;
+    font-size: 14px;  
+}
+
+footer {
+    padding-top: 30px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+@media screen and (max-width: 900px)
+{
+    nav input[type=text] {
+    
+        width: 45%;
+        align-items: center; 
+        
+    }
+
+}
+@media screen and (max-width: 768px)
+{
+    html, body{
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    nav input[type=text] {
+    
+        width: 60%;
+       
+    }
+
+    nav{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+       height: 8vh; 
+    }
+    .nav-links{
+        position: absolute;
+       
+        right: 0px;
+        height: 92vh;
+        top: 8vh;
+        background: rgb(62, 65, 71);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 70%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        
+    }
+
+    .nav-links a{
+        opacity: 0;
+        border-right: none;
+        border-bottom: 1px solid #555555;
+        border-left:none;
+    }
+
+    body {
+        background-image: linear-gradient(to top right, #eeeeee, #eeeeee);
+    }
+    input[type=text], input[type=password], input[type=email]{
+        font-size: 20px;
+        width: 90vw;
+        height: 8vh;
+        padding: 14px 18px;
+        margin: auto;
+        margin-bottom: 20px;
+        display: block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+
+    
+
+    input[type=submit] {
+        display: block;
+        margin: auto;
+        margin-bottom: 20px;
+        border-radius: 4px;
+        font-family: 'Poppins', sans-serif;
+        width: 90vw;
+        height: 8vh;
+        font-size: 20px;
+        background-color: rgb(62, 65, 71);
+        color: #eeeeee;
+    }
+
+    label[for=uname], label[for=email], label[for=password]{
+        
+        padding-left: 5vw;
+        font-size: 16px;   
+    }
+
+    .burger{
+        display: block;
+    } 
+   
+}
+
+
+.nav-active {
+    transform: translateX(0%);
+}
+
+@keyframes navLinkFade {
+    from{
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+.toggle .line1{
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}

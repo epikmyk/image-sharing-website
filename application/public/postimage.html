@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Post Image</title>
+	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="../stylesheets/main.css" />
+	<link type="text/css" rel="stylesheet" href="../stylesheets/postimage.css" />
+</head>
+
+<body>
+	<nav>
+		<div class="nav-bar">
+		<div class="nav-links">
+            <a href="index.html">HOME</a>
+            
+            
+            <div class="right-nav">
+                <a href="login.html">LOGIN</a>
+            </div>
+		</div>
+	</div>
+       
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+	</nav>
+	
+	<section>
+		<div class="postimage">
+			<h1>Post Image</h1>
+			<form class="postimageform" action="#" method="POST">
+				<label for="title">Title</label><br>
+				<input type="text" name="title" id="title" placeholder="Enter Title"/><br>
+
+				<label for="description">Description</label><br>
+				<input type="text" name="description" id="description" placeholder="Enter Description"/><br>
+
+				<div class="uploadimage">
+					<input type="file" name="img" id="img" accept="image/*"><br>
+				</div>
+
+				<div class="aup">
+					<input type="checkbox" name="AUP" id="AUP" />
+					<label for="AUP"> I accept the <a href="">Acceptable Use Policy</a></label><br>
+				</div>
+
+				<input type="submit" value="Post Image">
+			</form>
+		</div>
+	</section>
+	<script src="/javascripts/app.js"></script>
+</body>
+
+</html>
