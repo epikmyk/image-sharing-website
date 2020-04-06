@@ -67,11 +67,38 @@ section {
     margin: auto;
     
 }
+.container {
+    min-height: 92vh;
+    width: 100%;
+    max-width: 120rem;
+    margin: auto;
+    padding: 0, 1.5rem;
+
+}
 
 .images {
-    text-align: center;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(19rem, 1fr));
+    grid-template-rows: auto;
+    grid-gap: 1.5rem;
+
     
+}
+
+.images img {
+    width: 100%;
+    z-index: -1;
+}
+
+.images a {
+    width: 100%;
+    
+    
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
 }
 
 img {
