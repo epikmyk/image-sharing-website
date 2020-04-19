@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
-var dbRouter = require('./routes/dbtest');
+//var dbRouter = require('./routes/dbtest');
 
 
 var app = express();
@@ -28,7 +28,7 @@ app.use(session({
 }));
 
 app.use('/', indexRouter);
-app.use('/dbtest', dbRouter);
+//app.use('/dbtest', dbRouter);
 app.use('/', loginRouter);
 app.use('/users', usersRouter);
 
