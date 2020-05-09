@@ -1,12 +1,18 @@
 
 
 .content {
+    
+    background-color: #eeeeee;
    min-height: 88vh;
     font-family: 'Poppins', sans-serif;
-    width: 480px;
+    width: 600px;
     text-align: center;
     justify-content: center;
     margin: auto;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-radius: 4px;
+    border: 1px solid #bbbbbb;
 }
 
 .viewimage {
@@ -19,7 +25,7 @@
     margin: auto;
     width: 480px;
     
-    border-color: black;
+    border-color: #bbbbbb;
     border-radius: 4px;
     border-style: solid;
     border-width: 1px;
@@ -40,11 +46,17 @@
 .numofcomments {
     padding-top: 20px;
     padding-bottom: 10px;
+    padding-left: 60px;
     text-align: left;
+    
 }
 
-hr {
-    border-top: 1px solid #333333;
+.commentseperator {
+    border-top: 1px solid #bbbbbb;
+    width: 480px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
 }
 
 .comment a {
@@ -78,4 +90,11 @@ hr {
 
 img {
     padding-left: 0px;
+}
+
+@media screen and (max-width: 768px)
+{
+    .content {
+        border: none;
+    }
 }

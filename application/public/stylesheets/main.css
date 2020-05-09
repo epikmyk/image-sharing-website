@@ -9,7 +9,7 @@ html {
 }
 body {
     height: 100%;
-    background-image: linear-gradient(to top right, #999999, #dddddd); 
+    background-image: linear-gradient(to top right, #999999, #999999); 
     background-image: linear-gradient(to top right, #dddddd, #dddddd);  
 }
 
@@ -56,6 +56,10 @@ nav {
 .right-nav a {
     border-left: 1px solid #555555;
     border-right: none;
+}
+
+.nav-buttons {
+    cursor: pointer;
 }
 
 .nav-links a:hover{
