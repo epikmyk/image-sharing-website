@@ -57,7 +57,7 @@ label[for=title], label[for=description]{
     text-decoration: none;
 }
 
-@media screen and (max-width: 768px)
+@media screen and (max-width: 1024px)
 {
 
     .postimage{

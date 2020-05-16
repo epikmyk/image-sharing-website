@@ -1,5 +1,9 @@
 
-
+#nav-logo {
+    
+    padding-top: 3px;
+    
+}
 .content {
     
     background-color: #eeeeee;
@@ -43,10 +47,18 @@
     padding-right: 70px;
 }
 
+.numofcomments-container {
+    
+    width: 480px;
+    justify-content: center;
+    
+    margin: auto;
+    display: block;
+}
 .numofcomments {
     padding-top: 20px;
-    padding-bottom: 10px;
-    padding-left: 60px;
+    padding-bottom: 10px; 
+    
     text-align: left;
     
 }
@@ -89,12 +101,14 @@
 }
 
 img {
-    padding-left: 0px;
+    padding: 5px;
+    max-width: 100%;
 }
 
-@media screen and (max-width: 768px)
+@media screen and (max-width: 1024px)
 {
     .content {
+        width: 100%;
         border: none;
     }
 }

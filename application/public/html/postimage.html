@@ -6,44 +6,53 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Post Image</title>
 	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-	<link type="text/css" rel="stylesheet" href="/stylesheets/postimage.css" />
-	<script defer src="/javascripts/frontend.js"></script>
-    <script defer src="/javascripts/slide.js"></script>
+	<link type="text/css" rel="stylesheet" href="/public/stylesheets/main.css" />
+	<link type="text/css" rel="stylesheet" href="/public/stylesheets/postimage.css" />
+	<script defer src="/public/javascripts/frontend.js"></script>
+	<script defer src="/public/javascripts/slide.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+	<link rel="icon" href="/public/images/browser-icon.png">
 </head>
 
 <body>
 	<nav>
-		<div class="nav-bar">
-		<div class="nav-links">
-            <a href="/">HOME</a>
-            
-            
-            <div class="right-nav">
-                <a href="/login" id = "login" name="login" class="nav-buttons">LOGIN</a>
-            </div>
-		</div>
-	</div>
-       
-        <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
+		<div id="nav-logo">
+            <a href="/"><img src="/public/images/nav-logo.png"></a>
         </div>
+		<div class="nav-bar">
+			<div class="nav-links">
+				<a href="/">HOME</a>
+
+
+				<div class="right-nav">
+					<a href="/login" id="login" name="login" class="nav-buttons">LOGIN</a>
+				</div>
+			</div>
+		</div>
+
+		<div class="burger">
+			<div class="line1"></div>
+			<div class="line2"></div>
+			<div class="line3"></div>
+		</div>
 	</nav>
-	
+
 	<section>
 		<div class="postimage">
 			<h1>Post Image</h1>
-			<form class="postimageform" action="#" method="POST">
+			<form id="post-image" class="postimageform"  method="POST"
+				enctype="multipart/form-data">
+
+				<!--action="/posts/createPost"-->
+
 				<label for="title">Title</label><br>
-				<input type="text" name="title" id="title" placeholder="Enter Title"/><br>
+				<input type="text" name="title" id="title" placeholder="Enter Title" /><br>
 
 				<label for="description">Description</label><br>
-				<input type="text" name="description" id="description" placeholder="Enter Description"/><br>
+				<input type="text" name="description" id="description" placeholder="Enter Description" /><br>
 
 				<div class="uploadimage">
-					<input type="file" name="img" id="img" accept="image/*"><br>
+					<input type="file" name="uploadImage" id="img"><br>
 				</div>
 
 				<div class="aup">
@@ -55,7 +64,43 @@
 			</form>
 		</div>
 	</section>
-	
+
+	<script>
+		const _form = document.getElementById("post-image");
+		_form.onsubmit = function(event) {
+			event.preventDefault();
+			let _body = new FormData(_form);
+
+			/*
+			fetch('/posts/createPost', {
+				body:_body,
+				method:"POST"
+			})
+			.then((data) => {
+				console.log(data);
+				return data.json();
+			})
+			.then((dataAsObject) => {
+				console.log(dataAsObject);
+				alert(dataAsObject.message);
+				location.replace(dataAsObject.redirect);
+			})
+			.catch(err => console.log(err));*/
+
+			axios('/posts/createPost', {
+				data:_body,
+				method:"POST"
+			})		
+			.then((data) => {
+				console.log(data.data);
+				alert(data.data.message);
+				location.replace(data.data.redirect);
+			})
+			.catch(err => console.log(err));
+			
+		}
+	</script>
+
 </body>
 
 </html>

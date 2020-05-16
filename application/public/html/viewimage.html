@@ -2,52 +2,99 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Image</title>
-	<link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-	<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-    <link type="text/css" rel="stylesheet" href="/stylesheets/viewimage.css" />
-    <script defer src="/javascripts/frontend.js"></script>
-    <script defer src="/javascripts/slide.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/main.css" />
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/viewimage.css" />
+    <script defer src="/public/javascripts/frontend.js"></script>
+    <script defer src="/public/javascripts/slide.js"></script>
+    <link rel="icon" href="/public/images/browser-icon.png">
 </head>
 
 <body>
     <nav>
+        <div id="nav-logo">
+            <a href="/"><img src="/public/images/nav-logo.png"></a>
+        </div>
         <div class="nav-bar">
             <div class="nav-links">
                 <a href="/">HOME</a>
                 <a href="/postimage">POST IMAGE</a>
 
                 <div class="right-nav">
-                    <a href="/login" id = "login" name="login" class="nav-buttons">LOGIN</a>
+                    <a href="/login" id="login" name="login" class="nav-buttons">LOGIN</a>
                 </div>
             </div>
         </div>
-            <input type="text" name="searchbar" id="searchbar" placeholder="Search...">
-        
-            <div class="burger">
-                <div class="line1"></div>
-                <div class="line2"></div>
-                <div class="line3"></div>
-            </div>
-        
-    </nav>
-    
-    <div class="content">
-        <div class="viewimage">
-            <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-        </div>
-        <div class="comment">
-            <p>Login to leave a comment</p>
-            <a href="/login">Login</a>
-        </div>
-        <p class="numofcomments">0 Comments</p>
-        <hr class ="commentseperator">
+        <div class="search">
+            <input type="text" name="search-text" id="search-text" placeholder="Search...">
+            <!---->
 
+            <button id="text-bar-icon" type="button">Search</button>
+
+        </div>
+        <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+
+    </nav>
+
+    <div class="content">
+        
+            <header id="image-post-title">
+                <h2 id="image-post-title-text"></h2>
+            </header>
+            <div class="viewimage">
+                <img id="image-post-image" src="">
+                <div id="image-post-author" class="info-tags"></div>
+                <div id="image-post-date" class="info-tags"></div>
+                <div id="image-post-desc" class="info-tags"></div>
+            </div>
+            <div class="comment">
+                <p>Login to leave a comment</p>
+                <a href="/login">Login</a>
+            </div>
+            <div class="numofcomments-container">
+                <p class="numofcomments">0 Comments</p>
+            </div>
+            
+            <hr class="commentseperator">
+        
     </div>
-    
-    
+    <script>
+
+        let url = document.URL.split('/');
+        let _id = url[url.length - 1];
+        let postURL = 'http://localhost:3000/posts/getPostById/' + _id;
+        let imgpath = "";
+        fetch(postURL)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                console.log(dataAsObject);
+                
+                document.getElementById('image-post-image').src = '/' + dataAsObject.photopath;
+                document.getElementById('image-post-title').textContent = dataAsObject.title;
+                document.getElementById('image-post-author').textContent = dataAsObject.username;
+                document.getElementById('image-post-desc').textContent = dataAsObject.description;
+
+            })
+            .then(()=>{
+                //document.getElementById('image-post-image').src = imgpath;
+            })
+            //////CHANGE THIS TO SHOW ERROR///////////
+            .catch((err) => console.log(err));
+
+            //document.getElementById('image-post-image').src = '/public/images/uploads/31a4d11bc50ecb726de9160f37fa19be283fd08bff71.jpeg';
+
+            console.log("photopath is: " + imgpath);
+
+    </script>
+
+
     <footer>
         ©2020 Mike Morales. All Rights Reserved.
     </footer>

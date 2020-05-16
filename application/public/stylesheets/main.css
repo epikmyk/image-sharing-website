@@ -24,9 +24,19 @@ nav {
     
 }
 
+#nav-logo {
+    display: flex;
+    float: left;
+    margin: auto;
+    vertical-align: middle;
+    padding-top: 8px;
+    padding-left: 10px;
+    
+}
+
 .nav-bar {
     margin: auto;
-    max-width: 1000px;
+    max-width: 1100px;
 }
 .nav-links  {  
     
@@ -73,6 +83,20 @@ section {
     
 }
 
+.search {
+    margin-right: auto;
+   
+    align-items: center;
+    
+}
+
+#text-bar-icon {
+    
+    margin-left: -8px;
+    height: 30px;
+    border-radius: 4px;
+}
+
 .container {
     min-height: 92vh;
     width: 100%;
@@ -82,13 +106,14 @@ section {
 
 }
 
-.images {
+
+#main-content {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
-    /*grid-template-rows: auto;*/
-    grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr));
+   
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     grid-gap: 1rem;
-    grid-auto-flow: row dense;
+   
      
 }
 
@@ -97,6 +122,40 @@ section {
 .images img {
     width: 100%;
     
+}
+
+img {
+    max-width: 100%;
+}
+
+.card-body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eeeeee;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #bbbbbb;
+}
+
+.card-body a {
+    color: #222629;
+    text-decoration: none;
+}
+
+.card-body a:hover {
+    text-decoration: none;
+    color: #222629;
+}
+
+.card-body a:visited {
+    text-decoration: none;
+    color: #222629;
+}
+
+.anchor-buttons {
+    justify-content: center;
+    text-align: center;
+    display: block;
 }
 
 
@@ -111,8 +170,8 @@ section {
 
 }
 
-img {
-    padding: 5px;
+#logo {
+    display: flex;
 }
 
 
@@ -135,6 +194,7 @@ nav input[type=text] {
     margin-top: 20px;
     display: inline-block;   
 }
+
 
 .burger{
    
@@ -181,22 +241,61 @@ footer {
     font-family: 'Poppins', sans-serif;
 }
 
-@media screen and (max-width: 900px)
+
+
+@media screen and (max-width: 960px)
 {
+    /*
+    
     nav input[type=text] {
     
-        width: 45%;
+        width: 20%;
         align-items: center; 
         
-    }
+    }*/
+
+    
 
 }
-@media screen and (max-width: 768px)
+@media screen and (max-width: 1024px)
 {
     html, body{
         overflow-x: hidden;
         position: relative;
     }
+
+    #nav-logo{
+        padding: 0px;
+        margin-left: 0px;
+    }
+
+    .search {
+        display: inline-block;
+        align-items: center;
+        justify-content: center;
+        width: 60vw;
+        
+        
+        
+    }
+
+    #search-text {
+        width: 80%;
+        display: inline-block;
+        vertical-align: middle;
+        
+        
+        
+    }
+
+    #text-bar-icon {
+        
+        display: inline-block;
+        vertical-align: middle;
+        
+    }
+
+    
 
     nav input[type=text] {
     

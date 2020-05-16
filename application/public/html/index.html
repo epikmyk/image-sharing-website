@@ -6,28 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
-    <link type="text/css" rel="stylesheet" href="/stylesheets/login.css" />
-    <script defer src="/javascripts/frontend.js"></script>
-    <script defer src="/javascripts/slide.js"></script>
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/main.css" />
+    <link type="text/css" rel="stylesheet" href="/public/stylesheets/login.css" />
+    <script defer src="/public/javascripts/frontend.js"></script>
+    <script defer src="/public/javascripts/slide.js"></script>
+    <link rel="icon" href="/public/images/browser-icon.png">
 </head>
 
 <body>
     <nav>
+        <div id="nav-logo">
+            <a href="/"><img src="/public/images/nav-logo.png"></a>
+        </div>
         <div class="nav-bar">
+            
+            
             <div class="nav-links">
+                
+               
                 <a href="/">HOME</a>
-                <a href="/postimage">POST IMAGE</a>
+                    <a href="/postimage">POST IMAGE</a>
 
                 <div class="right-nav">
-
+                    
                     <a href="/login" id="login" name="login" class="nav-buttons">LOGIN</a>
                     <!--<a href="users/logout" id = "logout" name="logout">LOGOUT</a>-->
 
                 </div>
             </div>
         </div>
-        <input type="text" name="searchbar" id="searchbar" placeholder="Search...">
+
+        <div class="search">
+            <input type="text" name="search-text" id="search-text" placeholder="Search..."><!--
+            --><button id="text-bar-icon" type="button">Search</button>
+
+        </div>
+
 
         <div class="burger">
             <div class="line1"></div>
@@ -38,151 +52,87 @@
     </nav>
 
 
+
+
     <div class="container">
+
+        <div id="main-content">
+            <!--
         <div class="images">
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
-            <a href="/viewimage">
-                <img src="https://media0.giphy.com/media/l41Yhxp18gnTtcRVe/source.gif">
-            </a>
+                             
+        </div>-->
         </div>
     </div>
 
 
+
+    <script>
+        /*
+        function createCard(data) {
+            return `<div id=post-${data.id} class="card"> \
+                <img class="card-image" src="${data.thumbnail}"> \
+                    <div class="card-body"> \
+                        <p class="card-title">${data.title}</p> \
+                        <p class="card-text">${data.description}</p> \
+                        <a href="/posts/imagepost/${data.id}" class="anchor-buttons">Details</a> \
+                    </div> \
+                </div>`;
+        }*/
+
+        function createCard(data) {
+            return `<div id=post-${data.id} class="card"> \
+                
+                    <div class="card-body"> \
+                        <a href="/posts/imagepost/${data.id}" class="anchor-buttons"> \
+                            <img class="card-image" src="${data.thumbnail}"> \
+                            <p class="card-title">${data.title}</p> \
+                            <p class="card-text">${data.description}</p> \
+                        </a> \
+                    </div> \
+                </div>`;
+        }
+
+        function runSearch() {
+            //console.log("SEARCHING...");
+            let searchTerm = document.getElementById('search-text').value;
+            let searchURL = 'http://localhost:3000/posts/search/' + searchTerm;
+            fetch(searchURL)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    console.log(dataAsObject);
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createCard(post);
+                    })
+                    document.getElementById('main-content').innerHTML = _html;
+                })
+                //////CHANGE THIS TO SHOW ERROR///////////
+                .catch((err) => console.log(err));
+            //console.log(searchURL);
+        }
+        document.getElementById('text-bar-icon').onclick = runSearch;
+
+        document.getElementById('search-text').addEventListener('keyup', function(event) {
+            if(event.keyCode === 13){
+                event.preventDefault();
+                document.getElementById('text-bar-icon').click();
+            }
+        })
+        
+
+        fetch('http://localhost:3000/posts/getRecentPosts/')
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                console.log(dataAsObject);
+                let _html = "";
+                dataAsObject.forEach((post) => {
+                    _html += createCard(post);
+                })
+                document.getElementById('main-content').innerHTML = _html;
+            })
+            //////CHANGE THIS TO SHOW ERROR///////////
+            .catch((err) => console.log(err));
+    </script>
 
 
     <footer>
