@@ -29,3 +29,4 @@ if(document.cookie.includes('csid')) {
     logButton.innerHTML = "LOGIN";
     logButton.setAttribute('href', '/login');
 }
+

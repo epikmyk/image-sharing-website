@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="/public/stylesheets/main.css" />
     <link type="text/css" rel="stylesheet" href="/public/stylesheets/viewimage.css" />
-    <script defer src="/public/javascripts/frontend.js"></script>
+
+    <script defer src="/public/javascripts/viewImage.js"></script>
     <script defer src="/public/javascripts/slide.js"></script>
     <link rel="icon" href="/public/images/browser-icon.png">
 </head>
@@ -44,28 +45,53 @@
     </nav>
 
     <div class="content">
-        
-            <header id="image-post-title">
-                <h2 id="image-post-title-text"></h2>
-            </header>
-            <div class="viewimage">
-                <img id="image-post-image" src="">
-                <div id="image-post-author" class="info-tags"></div>
-                <div id="image-post-date" class="info-tags"></div>
-                <div id="image-post-desc" class="info-tags"></div>
-            </div>
-            <div class="comment">
-                <p>Login to leave a comment</p>
-                <a href="/login">Login</a>
-            </div>
-            <div class="numofcomments-container">
-                <p class="numofcomments">0 Comments</p>
-            </div>
-            
-            <hr class="commentseperator">
-        
+
+        <header id="image-post-title">
+            <h2 id="image-post-title-text"></h2>
+        </header>
+        <div class="viewimage">
+            <img id="image-post-image" src="">
+            <div id="image-post-author" class="info-tags"></div>
+            <div id="image-post-date" class="info-tags"></div>
+            <div id="image-post-desc" class="info-tags"></div>
+
+        </div>
+        <div class="comment">
+            <form class="commentform" action="/comments/createComment" method="POST"
+                enctype="application/x-www-form-urlencoded">
+                <!--
+                <input type="text" name="comments" id="comments" placeholder="leave comment" /><br>
+                <input type="hidden" name="imagepostid" id="imagepostid">
+                <input type="submit" value="Comment">-->
+                <input type="hidden" name="imagepostid" id="imagepostid">
+                <p id="leave-comment" name="leave-comment">Login to leave a comment</p>
+                <a href="/login" id="comment-login" name="comment-login">Login</a>
+            </form>
+
+
+        </div>
+        <div class="numofcomments-container">
+            <p class="numofcomments">0 Comments</p>
+        </div>
+
+        <hr class="commentseperator">
+        <div id="comments-container">
+
+        </div>
+
     </div>
     <script>
+
+        function createCard(data) {
+            return `<div id=post-${data.created} class="card"> \
+                    <div class="card-body"> \
+                            <p class="card-comment">${data.comment}</p> \
+                    </div> 
+                </div>`;
+        }
+
+
+
 
         let url = document.URL.split('/');
         let _id = url[url.length - 1];
@@ -75,22 +101,41 @@
             .then((data) => data.json())
             .then((dataAsObject) => {
                 console.log(dataAsObject);
-                
+
                 document.getElementById('image-post-image').src = '/' + dataAsObject.photopath;
                 document.getElementById('image-post-title').textContent = dataAsObject.title;
                 document.getElementById('image-post-author').textContent = dataAsObject.username;
                 document.getElementById('image-post-desc').textContent = dataAsObject.description;
 
+
             })
-            .then(()=>{
+            .then(() => {
                 //document.getElementById('image-post-image').src = imgpath;
             })
             //////CHANGE THIS TO SHOW ERROR///////////
             .catch((err) => console.log(err));
 
-            //document.getElementById('image-post-image').src = '/public/images/uploads/31a4d11bc50ecb726de9160f37fa19be283fd08bff71.jpeg';
+        fetch('/comments/getCommentsByPostId' + _id)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                let _html = "";
+                dataAsObject.forEach((post) => {
+                    _html += createCard(post);
 
-            console.log("photopath is: " + imgpath);
+                    //console.log(dataAsObject);
+                    console.log(post.comment);
+                })
+
+                document.getElementById('comments-container').innerHTML = _html;
+            })
+            .catch((err) => console.log(err));
+
+
+        document.getElementById('imagepostid').value = _id;
+        //document.getElementById('image-post-image').src = '/public/images/uploads/31a4d11bc50ecb726de9160f37fa19be283fd08bff71.jpeg';
+
+        console.log("photopath is: " + imgpath);
+        //console.log("Photo id is" + _id);
 
     </script>
 

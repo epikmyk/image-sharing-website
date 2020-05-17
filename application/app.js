@@ -8,8 +8,8 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var postsRouter = require('./routes/posts');
-//var loginRouter = require('./routes/login');
-//var dbRouter = require('./routes/dbtest');
+var commentsRouter = require('./routes/comments');
+
 var app = express();
 
 app.use(logger('dev'));
@@ -37,7 +37,7 @@ app.use("images", express.static(path.join(__dirname, "public/images")));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/posts', postsRouter);
-
+app.use('/comments', commentsRouter);
 
 
 app.use((err, req, res, next) =>{
