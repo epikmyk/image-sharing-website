@@ -4,19 +4,24 @@
     padding-top: 3px;
     
 }
+
+.main-content-container {
+    min-height: 85vh;
+}
 .content {
     
-    background-color: #eeeeee;
-   min-height: 60vh;
+    /*background-color: #eeeeee;*/
+   
     font-family: 'Poppins', sans-serif;
     width: 600px;
     text-align: center;
     justify-content: center;
     margin: auto;
-    margin-top: 20px;
+    
     padding-top: 20px;
+    /*
     border-radius: 4px;
-    border: 1px solid #bbbbbb;
+    border: 1px solid #bbbbbb;*/
 }
 
 .post-container {
@@ -68,7 +73,7 @@
 
 .comment {
     margin: auto;
-    width: 95%;
+    width: 100%;
    
     box-sizing: border-box;
     display: inline-flex;
@@ -79,13 +84,36 @@
 
 #comments {
     width: 100%;
-    
+    font-size: 1.2rem;
     margin-right: 0px;
     margin-left: 0px;
     margin-bottom: 5px;
     padding: 10px;
     overflow: hidden;
     resize: none;
+    background-color: #eeeeee;
+    border: none;
+    outline: none;
+}
+
+#comments:active {
+    border: none;
+    outline: none;
+}
+
+.leave-comment-container {
+    background-color: #eeeeee;
+   
+    font-family: 'Poppins', sans-serif;
+    width: 600px;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+    margin-top: 20px;
+    
+    
+    border-radius: 4px;
+    border: 1px solid #bbbbbb;
 }
 
 .commentform {
@@ -116,9 +144,14 @@
 
 .numofcomments-container {
     width: 95%;
+    
+
+    font-family: 'Poppins', sans-serif;
+    
+    text-align: center;
     justify-content: center;
     margin: auto;
-    display: block;
+    
 }
 
 #numofcomments {
@@ -136,15 +169,40 @@
 }
 
 .comment-card-body {
+    
     background-color:#eeeeee;
     color: rgb(62, 65, 71);
     border-radius: 4px;
-    border-bottom: 1px solid #bbbbbb;
-    width: 95%;
+   /* border: 1px solid #bbbbbb;*/
+    width: 100%;
     margin: auto;
     margin-top: 10px;
-    margin-bottom: 10px;
-    padding: 5px;
+   
+    padding: 10px;
+	  
+}
+
+
+.speech-bubble-arrow {
+    /*
+    content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-right-color: #00aabb;
+	border-left: 0;
+    border-bottom: 0;*/
+    border-right: 20px solid transparent;
+    border-top: 20px solid #eeeeee;
+    bottom: -20px;
+    width: 20px;
+    content: "";
+    margin-left: 20px;
+    right: 20px;
+	
 }
 
 .card-username {
@@ -210,8 +268,26 @@ img {
         border: none;
     }
 
+    .main-content-container {
+        width: 100%;
+    }
+
     #comment-button {
         width: 9rem;
         height: 3rem;
     }
+
+    .comment-card-body {
+        
+        border-bottom: 1px solid #bbbbbb;
+    }
+
+    .post-container {
+        max-width: 100%;
+    }
+
+    .leave-comment-container {
+        max-width: 100%;
+    }
+    
 }

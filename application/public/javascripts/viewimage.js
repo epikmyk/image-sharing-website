@@ -53,6 +53,7 @@ if (document.cookie.includes('csid')) {
     //commentTextBox.setAttribute("type", "text");
     commentTextBox.id = 'comments';
     commentTextBox.name = 'comments';
+    commentTextBox.placeholder = "Leave a comment..."
     commentPlaceholder.parentNode.replaceChild(commentTextBox, commentPlaceholder);
 
     $('#comments').on('input', function () {
