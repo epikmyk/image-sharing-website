@@ -7,9 +7,10 @@ const CommentModel = {
     },
 
     retrieveCommentsByPostId: function (_id) {
-        let baseSQL = 'Select c.comment, c.created \
+        let baseSQL = 'Select c.comment, c.created, u.username \
         FROM comments c \
         JOIN posts p on c.fk_postid=p.id\
+        JOIN users u on c.fk_userid=u.id\
         Where c.fk_postid=?';
 
         return db.query(baseSQL, _id);

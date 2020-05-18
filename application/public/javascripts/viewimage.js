@@ -49,11 +49,16 @@ if (document.cookie.includes('csid')) {
     commentLogButton.parentNode.replaceChild(commentButton, commentLogButton);
 
     let commentPlaceholder = document.getElementById('leave-comment');
-    let commentTextBox = document.createElement("INPUT");
-    commentTextBox.setAttribute("type", "text");
+    let commentTextBox = document.createElement("TEXTAREA");
+    //commentTextBox.setAttribute("type", "text");
     commentTextBox.id = 'comments';
     commentTextBox.name = 'comments';
     commentPlaceholder.parentNode.replaceChild(commentTextBox, commentPlaceholder);
+
+    $('#comments').on('input', function () {
+        this.style.height = 'auto';
+        this.style.height = (this.scrollHeight) + 2 + 'px';
+    });
 
 }
 else {

@@ -34,6 +34,7 @@ nav {
     
 }
 
+
 .nav-bar {
     margin: auto;
     max-width: 1100px;
@@ -91,10 +92,32 @@ section {
 }
 
 #text-bar-icon {
-    
     margin-left: -8px;
     height: 30px;
     border-radius: 4px;
+    border-top-left-radius: 1px;
+    border-bottom-left-radius: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+    border: 1px solid #777777;
+    background-color:#777777;
+    outline: none;
+     
+}
+
+#text-bar-icon:hover {
+    border: 1px solid #999999;
+    background-color: #999999;
+    outline: none;
+    cursor: pointer;
+    
+}
+
+#text-bar-icon:active {
+    border: 1px solid #999999;
+    background-color: #999999;
+    outline-color: #bbbbbb;
 }
 
 .container {

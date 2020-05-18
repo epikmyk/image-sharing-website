@@ -14,24 +14,21 @@ var app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
-//app.use(bodyParser.urlencoded({ extended: true}));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(express.static(path.join(__dirname, 'public')));
 
 var sessionStore = new mysqlStore({/* using default options */}, require('./conf/database'));
 var sessionOptions = {
     key: "csid",
     secret: "ilikebigbutts1234",
     store: sessionStore,
-    cookie: {secure: false, httpOnly: false, maxAge: 900000},
+    cookie: {secure: false, httpOnly: false, maxAge: 900000 * 4},
     resave: false,
     saveUninitialized: false
 }
 
 app.use(session(sessionOptions));
 app.use("/public", express.static(path.join(__dirname, "public")));
-//app.use(express.static(path.join(__dirname, 'public')));
 app.use("images", express.static(path.join(__dirname, "public/images")));
 
 app.use('/', indexRouter);
