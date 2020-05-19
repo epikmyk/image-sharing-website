@@ -27,7 +27,7 @@ const UserModel = {
                     return bcrypt.compare(password, results[0].password);
                 }
                 else {
-                    throw new UserError("user is not found", "/login", 200);
+                    throw new UserError("Username or password is incorrect.", "/login", 200);
                 }
             })
             .then((hashesMatch) => {

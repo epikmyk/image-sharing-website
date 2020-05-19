@@ -60,6 +60,7 @@ const UserController = {
         let username = req.body.username;
         let password = req.body.password;
         let userID;
+        console.log("USERNAME IS: " + username);
 
         //validate data
         UserModel.authenticate(username, password)
@@ -68,17 +69,17 @@ const UserController = {
                     successPrint('Login Successful');
                     req.session.username = userData.user;
                     req.session.userID = userData.uid;
-                    res.redirect('/');
+                    res.json({ status: "OK", message: 'login successful', "redirect": "/" });
                 }
                 else {
-                    throw new UserError('username or password is incorrect', '/login', 200);
+                    throw new UserError('Username or password is incorrect.', '/login', 200);
                 }
             })
             .catch((err) => {
                 if (err instanceof UserError) {
                     errorPrint(err.getMessage());
                     res.status(err.getStatus());
-                    res.redirect(err.getRedirectURL());
+                    res.json({ status: "OK", message: err.getMessage(), "redirect": 'back' });
                 } else {
                     next(err);
                 }

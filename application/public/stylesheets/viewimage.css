@@ -74,12 +74,8 @@
 .comment {
     margin: auto;
     width: 100%;
-   
     box-sizing: border-box;
-    display: inline-flex;
-    
-    
-    
+    display: inline-flex;  
 }
 
 #comments {
@@ -278,8 +274,31 @@ img {
     }
 
     .comment-card-body {
+        background-color: #dddddd;
+        width: 95%;
         
-        border-bottom: 1px solid #bbbbbb;
+    }
+
+    .speech-bubble-arrow {
+        /*
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 0;
+        height: 0;
+        border: 50px solid transparent;
+        border-right-color: #00aabb;
+        border-left: 0;
+        border-bottom: 0;*/
+        border-right: 20px solid transparent;
+        border-top: 20px solid #dddddd;
+        bottom: -20px;
+        width: 20px;
+        content: "";
+        margin-left: 35px;
+        right: 20px;
+        
     }
 
     .post-container {

@@ -9,6 +9,7 @@
 	<link type="text/css" rel="stylesheet" href="/public/stylesheets/main.css" />
 	<link type="text/css" rel="stylesheet" href="/public/stylesheets/login.css" />
 	<link rel="icon" href="/public/images/browser-icon.png">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -23,7 +24,8 @@
 	<section>
 		<div class="login">
 			<h1>Login</h1>
-			<form class="loginform" action="users/login" method="POST" enctype="application/x-www-form-urlencoded">
+			<div id="login-error"></div>
+			<form id="login-form" class="loginform"  method="POST" enctype="application/x-www-form-urlencoded">
 				<label for="uname">Username</label><br>
 				<input type="text" name="username" id="username" placeholder="Enter Username" /><br>
 
@@ -36,7 +38,42 @@
 		</div>
 	</section>
 
+	<script>
+		const _form = document.getElementById("login-form");
+		_form.onsubmit = function(event) {
+			event.preventDefault();
+			
+			let username = (document.getElementById("username").value);
+			let password = (document.getElementById("password").value)
+
+			axios('/users/login', {
+				data:{
+					username: username,
+					password: password
+				},
+				method:"POST"
+			})		
+			.then((data) => {
+				console.log(data.data);
+				//alert(data.data.message);
+				if(data.data.message == 'login successful')
+				{
+					location.replace(data.data.redirect);
+				}
+				else
+				{
+					document.getElementById('login-error').innerHTML = data.data.message;
+				}
+				
+			})
+			.catch(err => console.log(err));
+			
+		}
+	</script>
+
 	<script src="/public/javascripts/frontend.js"></script>
+
+
 </body>
 
 </html>
