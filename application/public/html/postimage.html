@@ -71,29 +71,13 @@
 			event.preventDefault();
 			let _body = new FormData(_form);
 
-			/*
-			fetch('/posts/createPost', {
-				body:_body,
-				method:"POST"
-			})
-			.then((data) => {
-				console.log(data);
-				return data.json();
-			})
-			.then((dataAsObject) => {
-				console.log(dataAsObject);
-				alert(dataAsObject.message);
-				location.replace(dataAsObject.redirect);
-			})
-			.catch(err => console.log(err));*/
-
 			axios('/posts/createPost', {
 				data:_body,
 				method:"POST"
 			})		
 			.then((data) => {
 				console.log(data.data);
-				alert(data.data.message);
+				//alert(data.data.message);
 				location.replace(data.data.redirect);
 			})
 			.catch(err => console.log(err));

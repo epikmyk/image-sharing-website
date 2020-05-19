@@ -9,6 +9,7 @@
 	<link type="text/css" rel="stylesheet" href="/public/stylesheets/main.css" />
 	<link type="text/css" rel="stylesheet" href="/public/stylesheets/registration.css" />
 	<link rel="icon" href="/public/images/browser-icon.png">
+	<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -23,16 +24,19 @@
 	<section>
 		<div class="register">
 			<h1>Register</h1>
-			<form class="registerform" action="users/register" method="POST" enctype="x-www-form-urlencoded">
+			<form id ="register-form" class="registerform" action="users/register" method="POST" enctype="x-www-form-urlencoded">
+				<div id="username-exists" class="error-validation"></div>
 				<label for="uname">Username</label><br>
-				<input type="text" name="uname" id="uname" placeholder="Enter Username" required /><br>
+				<input type="text" name="username" id="username" placeholder="Enter Username" required /><br>
 
+				<div id="email-exists" class="error-validation"></div>
 				<label for="email">Email</label><br>
 				<input type="email" name="email" id="email" placeholder="Enter Email" required /><br>
 
 				<label for="password">Password</label><br>
 				<input type="password" name="password" id="password" placeholder="Enter Password" required /><br>
 
+				<div id="password-check" class="error-validation"></div>
 				<label for="password">Confirm Password</label><br>
 				<input type="password" name="passwordcheck" id="passwordcheck" placeholder="Enter Password" /><br>
 
@@ -50,6 +54,62 @@
 			</form>
 		</div>
 	</section>
+
+	<script>
+		const _form = document.getElementById("register-form");
+		_form.onsubmit = function(event) {
+			event.preventDefault();
+			
+			let username = (document.getElementById("username").value);
+			let email = (document.getElementById("email").value);
+			let password = (document.getElementById("password").value);
+			let passwordCheck = (document.getElementById("passwordcheck").value);
+			let error = false;
+
+			
+			if(password !== passwordCheck)
+			{
+				document.getElementById('password-check').innerHTML = "Passwords do not match.";
+			}
+			else {
+				axios('/users/register', {
+				data:{
+					username: username,
+					email: email,
+					password: password
+				},
+				method:"POST"
+			})		
+			.then((data) => {
+				console.log(data.data);
+				
+				if(data.data.message == 'Username already exists.')
+				{
+					document.getElementById('username-exists').innerHTML = data.data.message;
+					document.getElementById('email-exists').innerHTML = "";
+					document.getElementById('password-check').innerHTML = "";
+				}
+				else if(data.data.message == 'Email already exists.')
+				{
+					document.getElementById('email-exists').innerHTML = data.data.message;
+					document.getElementById('username-exists').innerHTML = "";
+					document.getElementById('password-check').innerHTML = "";
+				}
+				else if(data.data.message == 'Registration successful'){
+					location.replace(data.data.redirect);
+				}
+				
+										
+			})
+			.catch(err => console.log(err));
+
+			}
+			
+
+			
+			
+		}
+	</script>
 	<script src="/public/javascripts/frontend.js"></script>
 </body>
 

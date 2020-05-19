@@ -23,6 +23,10 @@
     border: 1px solid #bbbbbb;
 }
 
+.error-validation {
+    color: red;
+    padding-bottom: 5px;
+}
 .agecheck {
         
     float: left;

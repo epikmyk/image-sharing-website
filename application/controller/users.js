@@ -5,7 +5,7 @@ const UserModel = require('../model/users');
 
 const UserController = {
     createUser: function (req, res, next) {
-        let username = req.body.uname;
+        let username = req.body.username;
         let email = req.body.email;
         let password = req.body.password;
 
@@ -15,7 +15,7 @@ const UserController = {
                     return UserModel.emailExists(email);
                 }
                 else {
-                    throw new UserError('username already exists', '/registration', 200);
+                    throw new UserError('Username already exists.', '/registration', 200);
                 }
             })
             .then((emailDoesNotExist) => {
@@ -23,7 +23,7 @@ const UserController = {
                     return password;
                 }
                 else {
-                    throw new UserError('email already exists', '/registration', 200);
+                    throw new UserError('Email already exists.', '/registration', 200);
                 }
             })
             .then((hashedPassword) => {
@@ -32,7 +32,7 @@ const UserController = {
             .then((userWasCreated) => {
                 if (userWasCreated) {
                     successPrint("user has been created");
-                    res.redirect('/login');
+                    res.json({ status: "OK", message: "Registration successful", "redirect": '/login' });
                 }
                 else {
                     throw new UserError(
@@ -47,7 +47,7 @@ const UserController = {
                 if (err instanceof UserError) {
                     errorPrint(err.getMessage());
                     res.status(err.getStatus());
-                    res.redirect(err.getRedirectURL());
+                    res.json({ status: "OK", message: err.getMessage(), "redirect": '/registration' });
                 }
                 else {
                     next(err);
