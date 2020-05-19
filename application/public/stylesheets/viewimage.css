@@ -5,9 +5,50 @@
     
 }
 
-.main-content-container {
-    min-height: 85vh;
+
+.search-results {
+    min-height: 92vh;
+    width: 100%;
+    max-width: 120rem;
+    margin: auto;
+    padding: 0, 1.5rem;
+   
 }
+#container {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    grid-gap: 1rem;
+}
+
+.search-card-body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #eeeeee;
+    margin-top: 10px;
+    border-radius: 4px;
+    width: 100%;
+    border: 1px solid #bbbbbb;
+}
+
+.search-card-body a {
+    color: #222629;
+    text-decoration: none;
+}
+
+.search-card-body a:hover {
+    text-decoration: none;
+    color: #222629;
+}
+
+.serach-card-body a:visited {
+    text-decoration: none;
+    color: #222629;
+}
+
+.search-card-image{
+    width: 100%;
+}
+
 .content {
    
     font-family: 'Poppins', sans-serif;
@@ -15,25 +56,12 @@
     text-align: center;
     justify-content: center;
     margin: auto;
-    
     padding-top: 20px;
   
 }
 
-#container {
-    min-height: 92vh;
-}
-#search-results-container {
-    display: grid;
-   
-    grid-template-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    grid-gap: 1rem;
-}
-
 .post-container {
     background-color: #eeeeee;
-    
      font-family: 'Poppins', sans-serif;
      width: 600px;
      text-align: center;
@@ -45,6 +73,7 @@
      border: 1px solid #bbbbbb;
      padding-bottom: 30px;
 }
+
 
 .viewimage {
     text-align: center;
@@ -187,17 +216,7 @@
 
 
 .speech-bubble-arrow {
-    /*
-    content: '';
-	position: absolute;
-	left: 0;
-	top: 50%;
-	width: 0;
-	height: 0;
-	border: 50px solid transparent;
-	border-right-color: #00aabb;
-	border-left: 0;
-    border-bottom: 0;*/
+    
     border-right: 20px solid transparent;
     border-top: 20px solid #eeeeee;
     bottom: -20px;
@@ -251,7 +270,7 @@
     text-decoration: none;
 }
 
-img {
+.post-container img {
     padding: 5px;
     width: 100%;
 }
@@ -287,17 +306,7 @@ img {
     }
 
     .speech-bubble-arrow {
-        /*
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        width: 0;
-        height: 0;
-        border: 50px solid transparent;
-        border-right-color: #00aabb;
-        border-left: 0;
-        border-bottom: 0;*/
+        
         border-right: 20px solid transparent;
         border-top: 20px solid #dddddd;
         bottom: -20px;

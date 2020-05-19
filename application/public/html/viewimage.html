@@ -46,7 +46,7 @@
 
     </nav>
 
-    <div id="search-results">
+    <div id="search-results" class="search-results"> 
         
 
         <div id="main-content-container">
@@ -122,9 +122,6 @@
                 </div>`;
         }
 
-
-
-
         let url = document.URL.split('/');
         let _id = url[url.length - 1];
         let postURL = 'http://localhost:3000/posts/getPostById/' + _id;
@@ -141,10 +138,6 @@
 
 
             })
-            .then(() => {
-                //document.getElementById('image-post-image').src = imgpath;
-            })
-            //////CHANGE THIS TO SHOW ERROR///////////
             .catch((err) => console.log(err));
 
 
@@ -177,18 +170,15 @@
 
 
         document.getElementById('imagepostid').value = _id;
-        //document.getElementById('image-post-image').src = '/public/images/uploads/31a4d11bc50ecb726de9160f37fa19be283fd08bff71.jpeg';
-
+       
         console.log("photopath is: " + imgpath);
-        //console.log("Photo id is" + _id);
-
-
+        
         function createSearchCard(data) {
-            return `<div id=post-${data.id} class="card"> \
+            return `<div id=post-${data.id} class="search-card"> \
                 
-                    <div class="card-body"> \
+                    <div class="search-card-body"> \
                         <a href="/posts/imagepost/${data.id}" class="anchor-buttons"> \
-                            <img class="card-image" src="/${data.thumbnail}"> \
+                            <img class="search-card-image" src="/${data.thumbnail}"> \
                             <p class="card-title">${data.title}</p> \
                             <p class="card-text">${data.description}</p> \
                         </a> \
@@ -204,17 +194,13 @@
 
             let divToRemove = document.getElementById('main-content-container');
             divToRemove.remove();
-            let container = document.createElement("div");
-            container.id = 'container'
-
-            let searchResultsContainer = document.createElement("div");
-            searchResultsContainer.id = 'search-results-container';
 
             let mainSearchContainer = document.getElementById('search-results');
 
+            let container = document.createElement("div");
+            container.id = 'container'
+            
             mainSearchContainer.appendChild(container);
-            container.appendChild(searchResultsContainer);
-
 
             let searchResults = document.createElement("div")
             fetch(searchURL)
@@ -225,10 +211,9 @@
                     dataAsObject.forEach((post) => {
                         _html += createSearchCard(post);
                     })
-                    //document.getElementById('search-results').innerHTML = _html;
-                    document.getElementById('search-results-container').innerHTML = _html;
+                    
+                    document.getElementById('container').innerHTML = _html;
                 })
-                //////CHANGE THIS TO SHOW ERROR///////////
                 .catch((err) => console.log(err));
             //console.log(searchURL);
         }

@@ -132,12 +132,9 @@ section {
 
 #main-content {
     display: grid;
-   
     grid-template-rows: auto;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    grid-gap: 1rem;
-   
-     
+    grid-gap: 1rem; 
 }
 
 
@@ -181,15 +178,14 @@ img {
     display: block;
 }
 
+.card-image {
+    width: 100%;
+}
+
 
 .images a {
     
-
-    
     display: block;
-    /*
-    align-items: center;
-    justify-content: center;*/
 
 }
 
@@ -265,21 +261,6 @@ footer {
 }
 
 
-
-@media screen and (max-width: 960px)
-{
-    /*
-    
-    nav input[type=text] {
-    
-        width: 20%;
-        align-items: center; 
-        
-    }*/
-
-    
-
-}
 @media screen and (max-width: 1024px)
 {
     html, body{

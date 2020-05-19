@@ -58,27 +58,14 @@
     <div class="container">
 
         <div id="main-content">
-            <!--
-        <div class="images">
-                             
-        </div>-->
+          
         </div>
     </div>
 
 
 
     <script>
-        /*
-        function createCard(data) {
-            return `<div id=post-${data.id} class="card"> \
-                <img class="card-image" src="${data.thumbnail}"> \
-                    <div class="card-body"> \
-                        <p class="card-title">${data.title}</p> \
-                        <p class="card-text">${data.description}</p> \
-                        <a href="/posts/imagepost/${data.id}" class="anchor-buttons">Details</a> \
-                    </div> \
-                </div>`;
-        }*/
+      
 
         function createCard(data) {
             return `<div id=post-${data.id} class="card"> \
@@ -107,7 +94,7 @@
                     })
                     document.getElementById('main-content').innerHTML = _html;
                 })
-                //////CHANGE THIS TO SHOW ERROR///////////
+                
                 .catch((err) => console.log(err));
             //console.log(searchURL);
         }
@@ -131,7 +118,7 @@
                 })
                 document.getElementById('main-content').innerHTML = _html;
             })
-            //////CHANGE THIS TO SHOW ERROR///////////
+           
             .catch((err) => console.log(err));
     </script>
 
