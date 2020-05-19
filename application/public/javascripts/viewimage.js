@@ -54,6 +54,7 @@ if (document.cookie.includes('csid')) {
     commentTextBox.id = 'comments';
     commentTextBox.name = 'comments';
     commentTextBox.placeholder = "Leave a comment..."
+    commentTextBox.required = true;
     commentPlaceholder.parentNode.replaceChild(commentTextBox, commentPlaceholder);
 
     $('#comments').on('input', function () {
