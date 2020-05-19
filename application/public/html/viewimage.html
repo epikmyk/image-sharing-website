@@ -46,63 +46,67 @@
 
     </nav>
 
-    <div class="main-content-container">
-
-        <div class="post-container">
-            <header id="image-post-title">
-                <h2 id="image-post-title-text"></h2>
-
-            </header>
-
-            <div class="image-post-author-container">
-                <p id="by-author">by</p>
-                <div id="image-post-author"></div>
-            </div>
-
-            <div class="viewimage">
-                <img id="image-post-image" src="">
-
-                <div id="image-post-date" class="info-tags"></div>
-                <div id="image-post-desc" class="info-tags"></div>
-
-            </div>
-        </div>
-
+    <div id="search-results">
         
-        <div class="leave-comment-container">
-            
-            <div class="comment">
-                <form class="commentform" action="/comments/createComment" method="POST"
-                    enctype="application/x-www-form-urlencoded">
-                    <!--
+
+        <div id="main-content-container">
+
+            <div class="post-container">
+                <header id="image-post-title">
+                    <h2 id="image-post-title-text"></h2>
+
+                </header>
+
+                <div class="image-post-author-container">
+                    <p id="by-author">by</p>
+                    <div id="image-post-author"></div>
+                </div>
+
+                <div class="viewimage">
+                    <img id="image-post-image" src="">
+
+                    <div id="image-post-date" class="info-tags"></div>
+                    <div id="image-post-desc" class="info-tags"></div>
+
+                </div>
+            </div>
+
+
+            <div class="leave-comment-container">
+
+                <div class="comment">
+                    <form class="commentform" action="/comments/createComment" method="POST"
+                        enctype="application/x-www-form-urlencoded">
+                        <!--
             <input type="text" name="comments" id="comments" placeholder="leave comment" /><br>
             <input type="hidden" name="imagepostid" id="imagepostid">
             <input type="submit" value="Comment">-->
-                    <input type="hidden" name="imagepostid" id="imagepostid">
-                    <p id="leave-comment" name="leave-comment">Login to leave a comment</p>
-                    <a href="/login" id="comment-login" name="comment-login">Login</a>
-                </form>
+                        <input type="hidden" name="imagepostid" id="imagepostid">
+                        <p id="leave-comment" name="leave-comment">Login to leave a comment</p>
+                        <a href="/login" id="comment-login" name="comment-login">Login</a>
+                    </form>
 
 
-            </div>
-        </div>
-        
-
-        <div class="content">
-
-            <div class="numofcomments-container">
-                <p id="numofcomments"></p>
+                </div>
             </div>
 
 
+            <div class="content">
+
+                <div class="numofcomments-container">
+                    <p id="numofcomments"></p>
+                </div>
 
 
 
-            <hr class="commentseperator">
-            <div id="comments-container">
+
+
+                <hr class="commentseperator">
+                <div id="comments-container">
+
+                </div>
 
             </div>
-
         </div>
     </div>
     <script>
@@ -177,6 +181,65 @@
 
         console.log("photopath is: " + imgpath);
         //console.log("Photo id is" + _id);
+
+
+        function createSearchCard(data) {
+            return `<div id=post-${data.id} class="card"> \
+                
+                    <div class="card-body"> \
+                        <a href="/posts/imagepost/${data.id}" class="anchor-buttons"> \
+                            <img class="card-image" src="/${data.thumbnail}"> \
+                            <p class="card-title">${data.title}</p> \
+                            <p class="card-text">${data.description}</p> \
+                        </a> \
+                    </div> \
+                </div>`;
+        }
+
+        function runSearch() {
+            //console.log("SEARCHING...");
+            let searchTerm = document.getElementById('search-text').value;
+            let searchURL = 'http://localhost:3000/posts/search/' + searchTerm;
+
+
+            let divToRemove = document.getElementById('main-content-container');
+            divToRemove.remove();
+            let container = document.createElement("div");
+            container.id = 'container'
+
+            let searchResultsContainer = document.createElement("div");
+            searchResultsContainer.id = 'search-results-container';
+
+            let mainSearchContainer = document.getElementById('search-results');
+
+            mainSearchContainer.appendChild(container);
+            container.appendChild(searchResultsContainer);
+
+
+            let searchResults = document.createElement("div")
+            fetch(searchURL)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    console.log(dataAsObject);
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createSearchCard(post);
+                    })
+                    //document.getElementById('search-results').innerHTML = _html;
+                    document.getElementById('search-results-container').innerHTML = _html;
+                })
+                //////CHANGE THIS TO SHOW ERROR///////////
+                .catch((err) => console.log(err));
+            //console.log(searchURL);
+        }
+        document.getElementById('text-bar-icon').onclick = runSearch;
+
+        document.getElementById('search-text').addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById('text-bar-icon').click();
+            }
+        })
 
     </script>
 
