@@ -43,6 +43,14 @@ const PostController = {
         
         return PostModel.search(searchTerm)
             .then(([results, fields]) => {
+                if (results.length === 0)
+                {
+                    return PostModel.search('groot')
+                    .then(([results, fields]) => {
+                        res.json(results)
+                    })
+                    .catch((err) => next(err));
+                }
                 res.json(results);
             })
             .catch((err) => next(err));

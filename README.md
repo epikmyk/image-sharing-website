@@ -19,9 +19,10 @@ Please follow the instructions below and fill in the information requested when 
 # Build/Run Instructions
 
 ## Build Instructions
-1. steps here
-2. steps here
+1. run npm install
 
 ## Run Instructions
-1. steps here
-2. steps here 
+1. run npm start
+
+Extra Credit?
+I added a comment system that displays the comment and the user who commented and the number of comments in each post. I tried to make the site mobile friendly as well. Not sure if that would count as extra credit though.
