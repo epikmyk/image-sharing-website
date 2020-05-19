@@ -192,8 +192,12 @@
             let searchURL = 'http://localhost:3000/posts/search/' + searchTerm;
 
 
-            let divToRemove = document.getElementById('main-content-container');
-            divToRemove.remove();
+            if(document.getElementById("main-content-container"))
+            {
+                let divToRemove = document.getElementById('main-content-container');
+                divToRemove.remove();
+            }
+            
 
             let mainSearchContainer = document.getElementById('search-results');
 
