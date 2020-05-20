@@ -10,6 +10,8 @@
     <link type="text/css" rel="stylesheet" href="/public/stylesheets/login.css" />
     <script defer src="/public/javascripts/frontend.js"></script>
     <script defer src="/public/javascripts/slide.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <link rel="icon" href="/public/images/browser-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
@@ -20,16 +22,16 @@
             <a href="/"><img src="/public/images/nav-logo.png"></a>
         </div>
         <div class="nav-bar">
-            
-            
+
+
             <div class="nav-links">
-                
-               
+
+
                 <a href="/">HOME</a>
-                    <a href="/postimage">POST IMAGE</a>
+                <a href="/postimage">POST IMAGE</a>
 
                 <div class="right-nav">
-                    
+
                     <a href="/login" id="login" name="login" class="nav-buttons">LOGIN</a>
                     <!--<a href="users/logout" id = "logout" name="logout">LOGOUT</a>-->
 
@@ -38,7 +40,8 @@
         </div>
 
         <div class="search">
-            <input type="text" name="search-text" id="search-text" placeholder="Search..."><!--
+            <input type="text" name="search-text" id="search-text" placeholder="Search...">
+            <!--
             --><button id="text-bar-icon" type="button"><i class="fa fa-search"></i></button>
 
         </div>
@@ -57,15 +60,15 @@
 
     <div class="container">
 
-        <div id="main-content">
-          
+        <div class="grid" id="main-content">
+
         </div>
     </div>
 
 
 
     <script>
-      
+
 
         function createCard(data) {
             return `<div id=post-${data.id} class="card"> \
@@ -93,20 +96,29 @@
                         _html += createCard(post);
                     })
                     document.getElementById('main-content').innerHTML = _html;
+                    
+                    imagesLoaded(document.querySelector('.grid'), function (instance) {
+                        var elem = document.querySelector('.grid');
+                        var msnry = new Masonry(elem, {
+                            itemSelector: '.card',
+
+
+                        });
+                    });
                 })
-                
+
                 .catch((err) => console.log(err));
             //console.log(searchURL);
         }
         document.getElementById('text-bar-icon').onclick = runSearch;
 
-        document.getElementById('search-text').addEventListener('keyup', function(event) {
-            if(event.keyCode === 13){
+        document.getElementById('search-text').addEventListener('keyup', function (event) {
+            if (event.keyCode === 13) {
                 event.preventDefault();
                 document.getElementById('text-bar-icon').click();
             }
         })
-        
+
 
         fetch('http://localhost:3000/posts/getRecentPosts/')
             .then((data) => data.json())
@@ -117,9 +129,22 @@
                     _html += createCard(post);
                 })
                 document.getElementById('main-content').innerHTML = _html;
+
+                imagesLoaded(document.querySelector('.grid'), function (instance) {
+                    var elem = document.querySelector('.grid');
+                    var msnry = new Masonry(elem, {
+                        itemSelector: '.card',
+
+
+                    });
+                });
+
             })
-           
+
             .catch((err) => console.log(err));
+
+
+
     </script>
 
 

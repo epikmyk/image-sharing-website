@@ -14,11 +14,10 @@
     padding: 0, 1.5rem;
    
 }
-#container {
-    display: grid;
-    grid-template-rows: auto;
-    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
-    grid-gap: 1rem;
+
+.search-card{
+    width: 14rem;
+    margin: 5px;
 }
 
 .search-card-body {

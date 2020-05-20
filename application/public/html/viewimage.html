@@ -13,6 +13,8 @@
     <script defer src="/public/javascripts/slide.js"></script>
     <link rel="icon" href="/public/images/browser-icon.png">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -214,6 +216,14 @@
                     })
                     
                     document.getElementById('container').innerHTML = _html;
+                    imagesLoaded(document.querySelector('#container'), function (instance) {
+                        var elem = document.querySelector('#container');
+                        var msnry = new Masonry(elem, {
+                            itemSelector: '.search-card',
+
+
+                        });
+                    });
                 })
                 .catch((err) => console.log(err));
             //console.log(searchURL);
