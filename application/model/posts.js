@@ -11,9 +11,9 @@ const PostModel = {
         let baseSQL = 'SELECT p.id, p.title, p.description, p.thumbnail, u.username \
         FROM posts p \
         JOIN users u on p.fk_userid=u.id \
-        WHERE title LIKE ?;';
+        WHERE title LIKE ? or username LIKE ?;';
 
-        return db.query(baseSQL, [searchTerm]);
+        return db.query(baseSQL, [searchTerm, searchTerm]);
 
 
     },
@@ -22,8 +22,8 @@ const PostModel = {
         let baseSQL = 'SELECT p.id, p.title, p.description, p.thumbnail, u.username, p.created \
         FROM posts p \
         JOIN users u on p.fk_userid=u.id\
-        ORDER BY p.created DESC';
-        //LIMIT 32;
+        ORDER BY p.created DESC\
+        LIMIT 64';
 
         return db.query(baseSQL);
     },
