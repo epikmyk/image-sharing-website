@@ -55,20 +55,14 @@
 
     </nav>
 
-
-
-
     <div class="container">
-
         <div class="grid" id="main-content">
-
         </div>
     </div>
 
 
 
     <script>
-
 
         function createCard(data) {
             return `<div id=post-${data.id} class="card"> \
@@ -101,7 +95,8 @@
                         var elem = document.querySelector('.grid');
                         var msnry = new Masonry(elem, {
                             itemSelector: '.card',
-
+                            columnWidth: '.card',
+                            fitWidth: true,
 
                         });
                     });
@@ -134,9 +129,10 @@
                     var elem = document.querySelector('.grid');
                     var msnry = new Masonry(elem, {
                         itemSelector: '.card',
-
+                        columnWidth: '.card',
+                        fitWidth: true,
                     });
-                    
+
                 });
 
             })

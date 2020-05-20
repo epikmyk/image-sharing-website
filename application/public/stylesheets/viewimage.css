@@ -5,6 +5,9 @@
     
 }
 
+#container {
+    margin: 0 auto;
+}
 
 .search-results {
     min-height: 92vh;

@@ -121,14 +121,7 @@ section {
 }
 
 
-.container {
-    min-height: 92vh;
-    width: 100%;
-    max-width: 120rem;
-    margin: auto;
-    padding: 0, 1.5rem;
 
-}
 
 .images img {
     width: 100%;
@@ -140,12 +133,33 @@ img {
 }
 
 
+.container {
+    min-height: 92vh;
+    width: 100%;
+    max-width: 120rem;
+    margin: auto;
+    padding: 0, 1.5rem;
+    justify-content: center;
+    text-align: center;
+}
+
+.grid {
+    margin: 0 auto;
+    
+}
+
+
+
 .card{
     width: 14rem;
     margin: 5px;
+    
+   
+    
 }
 .card-body {
-    white-space: pre-line;
+    
+    
     font-family: 'Poppins', sans-serif;
     background-color: #eeeeee;
     
@@ -153,6 +167,7 @@ img {
     width: 100%;
     border: 1px solid #bbbbbb;
     overflow-wrap: break-word;
+    
 }
 
 .card-body a {
