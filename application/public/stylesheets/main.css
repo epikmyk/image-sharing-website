@@ -145,12 +145,14 @@ img {
     margin: 5px;
 }
 .card-body {
+    white-space: pre-line;
     font-family: 'Poppins', sans-serif;
     background-color: #eeeeee;
     
     border-radius: 4px;
     width: 100%;
     border: 1px solid #bbbbbb;
+    overflow-wrap: break-word;
 }
 
 .card-body a {

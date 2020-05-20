@@ -21,12 +21,14 @@
 }
 
 .search-card-body {
+    
     font-family: 'Poppins', sans-serif;
     background-color: #eeeeee;
     margin-top: 10px;
     border-radius: 4px;
     width: 100%;
     border: 1px solid #bbbbbb;
+    overflow-wrap: break-word;
 }
 
 .search-card-body a {
