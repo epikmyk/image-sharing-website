@@ -34,12 +34,16 @@ label[for=title], label[for=description]{
 
 .aup {
     
-    display: block;
+    display: flex;
     padding: 10px;
-    padding-left: 95px;
+    padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 30px;
+    align-items: center;
 
+}
+#aup-label {
+    padding-left: 2px;
 }
 
 .aup a:link {
