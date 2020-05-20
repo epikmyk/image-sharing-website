@@ -42,6 +42,8 @@
 .search-card-body a:hover {
     text-decoration: none;
     color: #222629;
+    background-color: #cccccc;
+    filter: opacity(.9);
 }
 
 .serach-card-body a:visited {
