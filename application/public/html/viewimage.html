@@ -15,7 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -68,6 +68,7 @@
                 <div class="viewimage">
                     <img id="image-post-image" src="">
 
+
                     <div id="image-post-date" class="info-tags"></div>
                     <div id="image-post-desc" class="info-tags"></div>
 
@@ -93,8 +94,34 @@
 
             <div class="content">
 
+                <!--
                 <div class="numofcomments-container">
                     <p id="numofcomments"></p>
+                </div>-->
+
+
+                <div class="content-display-container">
+                    <form class="likeform" action="/likes/likePost" method="POST"
+                        enctype="application/x-www-form-urlencoded">
+                        <input type="hidden" name="imagepostid_likes" id="imagepostid_likes">
+
+                        <div class="numoflikes-container">
+                            <div id="numofcomments" class="numofcomments"></div>
+                            <div class="like-container">
+                                <div id="numoflikes" class="numoflikes"></div>
+                                <div class="like-button-container">
+                                    <img id ="thumbs-up"src="/public/images/thumbs-up.png">
+                                    <div id="like-button" class="like-button"></div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!--<input type="submit" value="like">-->
+                    </form>
+
+                    <input type="hidden" name="liked-post" id="liked-post">
                 </div>
 
 
@@ -112,6 +139,8 @@
     <script>
 
 
+
+
         function createCard(data) {
             return `<div id=post-${data.created} class="comment-card"> \
                     <div class="comment-card-body"> \
@@ -121,6 +150,25 @@
                     <div class="speech-bubble-arrow"></div>
                 </div>`;
         }
+
+        /*
+        function likePost() {
+            document.getElementById('liked-post').value = 1;
+            console.log("LIKE IS: " + document.getElementById('liked-post').value);
+
+            console.log("i liked you!");
+
+            let like = (document.getElementById('liked-post').value);
+
+            axios('/posts/likePost', {
+                data: {
+                    like: like,
+
+                }
+            })
+        }*/
+
+
 
         let url = document.URL.split('/');
         let _id = url[url.length - 1];
@@ -168,8 +216,46 @@
             .catch((err) => console.log(err));
 
 
+        let numoflikes = 0;
+        fetch('/likes/getLikesByPostId' + _id)
+            .then((data) => data.json())
+            .then((dataAsObject) => {
+                let _html = "";
+                dataAsObject.forEach((post) => {
+
+
+                    //console.log(dataAsObject);
+
+                    console.log(post.like_);
+                    console.log(post)
+
+                })
+
+                if (dataAsObject.length > 0) {
+                    numoflikes = dataAsObject.length;
+                }
+                else {
+                    numoflikes = 0;
+                }
+
+
+                console.log('numoflikesis ' + numoflikes)
+                //document.getElementById('comments-container').innerHTML = _html;
+
+                if (numoflikes == 1) {
+                    document.getElementById('numoflikes').innerHTML = numoflikes + ' like';
+                }
+                else {
+                    document.getElementById('numoflikes').innerHTML = numoflikes + ' likes';
+                }
+
+            })
+            .catch((err) => console.log(err));
+
+
 
         document.getElementById('imagepostid').value = _id;
+        document.getElementById('imagepostid_likes').value = _id;
 
         console.log("photopath is: " + imgpath);
 

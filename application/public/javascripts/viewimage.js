@@ -23,6 +23,10 @@ function logoutClick(event) {
             commentButton.id = "comment-button";
             commentButton.parentNode.replaceChild(commentLogButton, commentButton);
 
+            let likeButton = document.getElementById('like-button');
+            let activeLikeButton = document.createElement("div");
+            activeLikeButton.id = "active-like-button";
+            activeLikeButton.parentNode.replaceChild(likeButton, activeLikeButton);
 
             let commentPlaceholder = document.getElementById('leave-comment');
             let commentTextBox = document.createElement("p");
@@ -47,6 +51,16 @@ if (document.cookie.includes('csid')) {
     commentButton.value = "Comment";
     commentButton.id = "comment-button";
     commentLogButton.parentNode.replaceChild(commentButton, commentLogButton);
+
+    
+    let likeButton = document.getElementById('like-button');
+    let activeLikeButton = document.createElement("INPUT");
+    activeLikeButton.setAttribute("type", "submit");
+    activeLikeButton.value = "";
+    activeLikeButton.id = "active-like-button";
+    likeButton.parentNode.replaceChild(activeLikeButton, likeButton);
+
+    
 
     let commentPlaceholder = document.getElementById('leave-comment');
     let commentTextBox = document.createElement("TEXTAREA");
