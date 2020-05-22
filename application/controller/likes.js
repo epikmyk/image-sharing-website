@@ -8,15 +8,17 @@ const LikesController = {
         
         let fk_postid = req.body.imagepostid_likes;
         console.log(req.body.imagepostid_likes);
-        let _id = req.params.id;
+        //let _id = req.params.id;
         let fk_userid = req.session.userID;
 
         LikeModel.create(fk_postid, fk_userid)
+        .then(([results, fields]) => {
+            console.log(results);
+            res.json(results.length);
+        })
         .catch((err) => {
             throw err;
         })
-
-        res.redirect('back');
         
     },
 

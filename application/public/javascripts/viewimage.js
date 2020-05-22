@@ -61,10 +61,8 @@ if (document.cookie.includes('csid')) {
     likeButton.parentNode.replaceChild(activeLikeButton, likeButton);
 
     
-
     let commentPlaceholder = document.getElementById('leave-comment');
     let commentTextBox = document.createElement("TEXTAREA");
-    //commentTextBox.setAttribute("type", "text");
     commentTextBox.id = 'comments';
     commentTextBox.name = 'comments';
     commentTextBox.placeholder = "Leave a comment..."

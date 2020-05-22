@@ -101,8 +101,7 @@
 
 
                 <div class="content-display-container">
-                    <form class="likeform" action="/likes/likePost" method="POST"
-                        enctype="application/x-www-form-urlencoded">
+                    <form id="likeform" class="likeform" method="POST" enctype="application/x-www-form-urlencoded">
                         <input type="hidden" name="imagepostid_likes" id="imagepostid_likes">
 
                         <div class="numoflikes-container">
@@ -110,7 +109,7 @@
                             <div class="like-container">
                                 <div id="numoflikes" class="numoflikes"></div>
                                 <div class="like-button-container">
-                                    <img id ="thumbs-up"src="/public/images/thumbs-up.png">
+                                    <img id="thumbs-up" src="/public/images/thumbs-up.png">
                                     <div id="like-button" class="like-button"></div>
                                 </div>
 
@@ -151,25 +150,6 @@
                 </div>`;
         }
 
-        /*
-        function likePost() {
-            document.getElementById('liked-post').value = 1;
-            console.log("LIKE IS: " + document.getElementById('liked-post').value);
-
-            console.log("i liked you!");
-
-            let like = (document.getElementById('liked-post').value);
-
-            axios('/posts/likePost', {
-                data: {
-                    like: like,
-
-                }
-            })
-        }*/
-
-
-
         let url = document.URL.split('/');
         let _id = url[url.length - 1];
         let postURL = 'http://localhost:3000/posts/getPostById/' + _id;
@@ -189,68 +169,114 @@
             .catch((err) => console.log(err));
 
 
-        fetch('/comments/getCommentsByPostId' + _id)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((post) => {
-                    _html += createCard(post);
+        getComments = () => {
+            fetch('/comments/getCommentsByPostId' + _id)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    let _html = "";
+                    dataAsObject.forEach((post) => {
+                        _html += createCard(post);
 
-                    //console.log(dataAsObject);
-                    console.log(post.comment);
-                    console.log(post)
+                        //console.log(dataAsObject);
+                        // console.log(post.comment);
+                        // console.log(post)
+
+                    })
+
+                    let numofcomments = dataAsObject.length;
+                    document.getElementById('comments-container').innerHTML = _html;
+
+                    if (numofcomments == 1) {
+                        document.getElementById('numofcomments').innerHTML = numofcomments + ' comment';
+                    }
+                    else {
+                        document.getElementById('numofcomments').innerHTML = numofcomments + ' comments';
+                    }
 
                 })
+                .catch((err) => console.log(err));
+        }
 
-                let numofcomments = dataAsObject.length;
-                document.getElementById('comments-container').innerHTML = _html;
-
-                if (numofcomments == 1) {
-                    document.getElementById('numofcomments').innerHTML = numofcomments + ' comment';
-                }
-                else {
-                    document.getElementById('numofcomments').innerHTML = numofcomments + ' comments';
-                }
-
-            })
-            .catch((err) => console.log(err));
+        getComments();
 
 
+
+
+
+        let callCount = 0;
         let numoflikes = 0;
-        fetch('/likes/getLikesByPostId' + _id)
-            .then((data) => data.json())
-            .then((dataAsObject) => {
-                let _html = "";
-                dataAsObject.forEach((post) => {
+        const _form = document.getElementById("likeform");
+        _form.onsubmit = function (event) {
+            event.preventDefault();
+
+            let imagepostid_likes = (document.getElementById('imagepostid_likes').value)
 
 
-                    //console.log(dataAsObject);
 
-                    console.log(post.like_);
-                    console.log(post)
+            axios('/likes/likePost', {
+                data: {
+                    imagepostid_likes: imagepostid_likes,
+
+                },
+                method: "POST"
+            })
+                .then((data) => {
+                   
+                    console.log("likes: " + data.data);
+                    if (data.data == 1) {
+                        document.getElementById('numoflikes').innerHTML = data.data + ' like';
+                    }
+                    else {
+                        document.getElementById('numoflikes').innerHTML = data.data + ' likes';
+                    }
 
                 })
+                
+                .catch(err => console.log(err));
+                
 
-                if (dataAsObject.length > 0) {
-                    numoflikes = dataAsObject.length;
-                }
-                else {
-                    numoflikes = 0;
-                }
+        }
+       
+
+        let getLikes = () => {
+
+            fetch('/likes/getLikesByPostId' + _id)
+                .then((data) => data.json())
+                .then((dataAsObject) => {
+                    //let _html = "";
+                    dataAsObject.forEach((post) => {
+
+                        console.log("post liked" + post.like_);
+                        //console.log(post)
+
+                    })
+
+                    if (dataAsObject.length > 0) {
+                        numoflikes = dataAsObject.length;
+                    }
+                    else {
+                        numoflikes = 0;
+                    }
 
 
-                console.log('numoflikesis ' + numoflikes)
-                //document.getElementById('comments-container').innerHTML = _html;
+                    console.log('numoflikesis ' + numoflikes)
+                    //document.getElementById('comments-container').innerHTML = _html;
 
-                if (numoflikes == 1) {
-                    document.getElementById('numoflikes').innerHTML = numoflikes + ' like';
-                }
-                else {
-                    document.getElementById('numoflikes').innerHTML = numoflikes + ' likes';
-                }
+                    if (numoflikes == 1) {
+                        document.getElementById('numoflikes').innerHTML = numoflikes + ' like';
+                    }
+                    else {
+                        document.getElementById('numoflikes').innerHTML = numoflikes + ' likes';
+                    }
 
-            })
-            .catch((err) => console.log(err));
+                })
+                .catch((err) => console.log(err));
+        }
+
+        getLikes();
+
+
+
 
 
 
