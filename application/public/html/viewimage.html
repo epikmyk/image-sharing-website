@@ -79,7 +79,7 @@
             <div class="leave-comment-container">
 
                 <div class="comment">
-                    <form class="commentform" action="/comments/createComment" method="POST"
+                    <form class="commentform"  id="commentform" method="POST"
                         enctype="application/x-www-form-urlencoded">
 
                         <input type="hidden" name="imagepostid" id="imagepostid">
@@ -168,7 +168,7 @@
             })
             .catch((err) => console.log(err));
 
-
+        //gets all comments
         getComments = () => {
             fetch('/comments/getCommentsByPostId' + _id)
                 .then((data) => data.json())
@@ -176,10 +176,6 @@
                     let _html = "";
                     dataAsObject.forEach((post) => {
                         _html += createCard(post);
-
-                        //console.log(dataAsObject);
-                        // console.log(post.comment);
-                        // console.log(post)
 
                     })
 
@@ -200,18 +196,52 @@
         getComments();
 
 
+        //create comments
+        const comment_form = document.getElementById("commentform");
+        comment_form.onsubmit = function (event) {
+            event.preventDefault();
 
+            let imagepostid = (document.getElementById('imagepostid').value);
+            let comments = (document.getElementById('comments').value);
 
+            axios('/comments/createComment', {
+                data: {
+                    imagepostid: imagepostid,
+                    comments: comments
+                },
+                method: "POST"
+            })
+                .then((data) => {
+                    let _html = "";
+                    data.data.comments.forEach((post) => {
+                        _html += createCard(post);
+                        console.log(post);
+                    })
 
-        let callCount = 0;
+                    document.getElementById('comments-container').innerHTML = _html;
+                   
+                   console.log("number of comments: " + data.data.numOfComments);
+                   if (data.numOfComments == 1) {
+                        document.getElementById('numofcomments').innerHTML = data.data.numOfComments + ' comment';
+                    }
+                    else {
+                        document.getElementById('numofcomments').innerHTML = data.data.numOfComments + ' comments';
+                    }
+                    document.getElementById('comments').value = "";
+                    document.getElementById('comments').placeholder = "Leave a comment...";
+                   
+
+                })
+                .catch(err => console.log(err));
+        }
+
+        //like or unlike post
         let numoflikes = 0;
         const _form = document.getElementById("likeform");
         _form.onsubmit = function (event) {
             event.preventDefault();
 
             let imagepostid_likes = (document.getElementById('imagepostid_likes').value)
-
-
 
             axios('/likes/likePost', {
                 data: {
@@ -233,11 +263,9 @@
                 })
                 
                 .catch(err => console.log(err));
-                
-
         }
-       
 
+       //get all likes
         let getLikes = () => {
 
             fetch('/likes/getLikesByPostId' + _id)
@@ -274,9 +302,6 @@
         }
 
         getLikes();
-
-
-
 
 
 

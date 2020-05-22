@@ -10,8 +10,17 @@ const CommentsController = {
 
         let fk_userid = req.session.userID;
 
-        CommentModel.create(comment, fk_postid, fk_userid);
-        res.redirect('back');
+        
+        CommentModel.create(comment, fk_postid, fk_userid)
+        .then(([results, fields]) => {
+            console.log("number of comments: " + results.length);
+            
+            res.json({comments: results, numOfComments: results.length});
+        })
+        .catch((err) => {
+            throw err;
+        })
+        //res.redirect('back');
     },
 
     getCommentsByPostId: function (req, res, next) {
