@@ -26,3 +26,6 @@ Please follow the instructions below and fill in the information requested when 
 
 Extra Credit?
 I added a comment system that displays the comment and the user who commented and the number of comments in each post. I also added the ability for users to like posts and unlike previously liked posts. I tried to make the site mobile friendly as well. Not sure if that would count as extra credit though.
+
+
+* test
